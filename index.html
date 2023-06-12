@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zodiac Sign Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    
+    input[type="date"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Zodiac Sign Finder</h1>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required>
+    <button onclick="findZodiacSign()">Find Zodiac Sign</button>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function findZodiacSign() {
+      var dobInput = document.getElementById("dob");
+      var dob = new Date(dobInput.value);
+      
+      if (isNaN(dob)) {
+        document.getElementById("result").innerHTML = '<span class="error">Invalid date of birth</span>';
+        return;
+      }
+      
+      var month = dob.getMonth() + 1;
+      var day = dob.getDate();
+      
+      var zodiacSign = "";
+      
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+        zodiacSign = "Aquarius";
+      } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+        zodiacSign = "Pisces";
+      } else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+        zodiacSign = "Aries";
+      } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+        zodiacSign = "Taurus";
+      } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+        zodiacSign = "Gemini";
+      } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+        zodiacSign = "Cancer";
+      } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+        zodiacSign = "Leo";
+      } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+        zodiacSign = "Virgo";
+      } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+        zodiacSign = "Libra";
+      } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+        zodiacSign = "Scorpio";
+      } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+        zodiacSign = "Sagittarius";
+      } else {
+        zodiacSign = "Capricorn";
+      }
+      
+      document.getElementById("result").innerHTML = "Your zodiac sign is: " + zodiacSign;
+    }
+  </script>
+</body>
+</html>
